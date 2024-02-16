@@ -25,8 +25,9 @@ pnpm run dev
 
 ## Build
 
-Build the application (static):
+Build the application (static for github pages):
 
 ```bash
-build.sh
+pnpm run generate
+pnpm run deploy
 ```
