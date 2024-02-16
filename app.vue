@@ -408,11 +408,13 @@ export default {
       let hsa_a_active = (this.form.hsaEmployeeA != 0) || (this.form.hsaEmployerA != 0);
       if (fsa_a_active && hsa_a_active) {
         alert("FSA and HSA cannot both be active for Plan A");
+        return;
       }
       let fsa_b_active = (this.form.fsaEmployeeB != 0) || (this.form.fsaEmployerB != 0);
       let hsa_b_active = (this.form.hsaEmployeeB != 0) || (this.form.hsaEmployerB != 0);
       if (fsa_b_active && hsa_b_active) {
         alert("FSB and HSB cannot both be active for Plan B");
+        return;
       }
       let output = document.getElementById("output");
       if (output == null) {
