@@ -404,9 +404,16 @@ export default {
   },
   methods: {
     handleSubmit: async function () {
-      let comparison = "";
-      console.log(this.form);
-
+      let fsa_a_active = (this.form.fsaEmployeeA != 0) || (this.form.fsaEmployerA != 0);
+      let hsa_a_active = (this.form.hsaEmployeeA != 0) || (this.form.hsaEmployerA != 0);
+      if (fsa_a_active && hsa_a_active) {
+        alert("FSA and HSA cannot both be active for Plan A");
+      }
+      let fsa_b_active = (this.form.fsaEmployeeB != 0) || (this.form.fsaEmployerB != 0);
+      let hsa_b_active = (this.form.hsaEmployeeB != 0) || (this.form.hsaEmployerB != 0);
+      if (fsa_b_active && hsa_b_active) {
+        alert("FSB and HSB cannot both be active for Plan B");
+      }
       let output = document.getElementById("output");
       if (output == null) {
         alert("Weird. Output element not found!");
@@ -415,7 +422,7 @@ export default {
       store_local_form(this.form); // On submit, let's store the form so the user can pick up where they left off.
       let [scenario, medical_costs] = get_medical_costs(this.form);
       let rows = costs_to_rows(medical_costs);
-      comparison = `
+      let comparison = `
           <div class="block text-gray-700 text-sm font-bold mb-2 py-5">Example Scenario</div>
           <table class="px-10 table-auto w-lg shadow border border-gray-200 rounded">
             <thead class="bg-slate-100">

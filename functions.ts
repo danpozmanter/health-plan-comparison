@@ -64,6 +64,8 @@ const get_total_spending_account_amount = (
     hsa_employee: number,
     hsa_employer: number,
 ) => {
+    // Calculate and return the total annual amount for the active spending account.
+    // Only an HSA or a FSA will be active, not both.
     const fsa_total = fsa_employee + fsa_employer;
     const hsa_total = hsa_employee + hsa_employer;
     if (fsa_total != 0) {
@@ -75,6 +77,8 @@ const get_total_spending_account_amount = (
 };
 
 const get_total_spending_account_cost = (
+    // Calculate and return the total annual cost for the active spending account.
+    // Only an HSA or a FSA will be active, not both.
     total_tax_rate: number,
     fsa_employee: number,
     hsa_employee: number,
@@ -90,6 +94,8 @@ const get_total_spending_account_cost = (
 };
 
 export const get_medical_costs = (form: any) => {
+    // Retrieve the scenario costs, and a list of general costs for each health plan under consideration.
+
     const total_tax_rate = (form.federal + form.state + form.fica) / 100.0;
     const premium_costsA = form.premiumA * 24 * (1 - total_tax_rate);
     const premium_costsB = form.premiumB * 24 * (1 - total_tax_rate);
@@ -149,7 +155,7 @@ export const get_medical_costs = (form: any) => {
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     const scenario = [form.doctorVisits, expenses, costsA, costsB];
 
-    // General Expenses
+    // General Costs
     const costs = [];
     for (let i = 0; i < 50001; i += 1000) {
         const expenses = `${i.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
@@ -187,6 +193,7 @@ export const get_medical_costs = (form: any) => {
 };
 
 export const costs_to_rows = (medical_costs: string[][]) => {
+    // Build out the html rows for each row of medical costs.
     let rows = "";
     for (const i in medical_costs) {
         rows += `
@@ -200,6 +207,7 @@ export const costs_to_rows = (medical_costs: string[][]) => {
 };
 
 export const export_to_csv = (medical_costs: string[][]) => {
+    // Simple export of the data (expenses, not the example scenario) to csv.
     for (const i in medical_costs) {
         medical_costs[i][0] = `"${medical_costs[i][0]}"`;
         medical_costs[i][1] = `"${medical_costs[i][1]}"`;
@@ -213,9 +221,11 @@ export const export_to_csv = (medical_costs: string[][]) => {
 };
 
 export const store_local_form = (form: any) => {
+    // Store the entry form locally for convenience.
     localStorage.setItem("healthPlanForm", JSON.stringify(form));
 };
 
 export const load_local_form = () => {
+    // Load the entry form from local storage.
     return localStorage.getItem("healthPlanForm");
 };
