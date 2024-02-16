@@ -1,3 +1,3 @@
 #!/bin/sh
 npx nuxi generate
-mv .output/public/* public/
+mv .output/public/* docs/
