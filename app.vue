@@ -13,6 +13,7 @@
       >this reddit post</a
     >. I've added an "example scenario", which will use either copay (if not 0),
     or coinsurance times an "average" doctor visit cost.
+    <a href="https://github.com/danpozmanter/health-plan-comparison">Source on Github</a>.
   </div>
   <div class="w-full grid grid-cols-1 md:grid-cols-2 bg-white text-sm p-5">
     <form
