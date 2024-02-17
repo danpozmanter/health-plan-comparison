@@ -5,7 +5,10 @@ this is a simple tool to help compare two health insurance plans.
 
 [Give it a try (hosted on Github Pages)](https://danpozmanter.github.io/health-plan-comparison/).
 
-I've added an "example scenario" and copay (if primary and specialist copays are different, I recommend using the specialist copay) option. This is only used for the example scenario.
+Changes from the spreadsheet:
+
+* I've added an "example scenario" and copay (if primary and specialist copays are different, I recommend using the specialist copay). This is only used for the example scenario.
+* I've made it so you can compare FSA or HSA for either plan, rather than comparing one low deductible + FSA and one high deductible + HSA plan.
 
 ## Run (Dev)
 
