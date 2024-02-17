@@ -13,7 +13,11 @@
       >this reddit post</a
     >. I've added an "example scenario", which will use either copay (if not 0),
     or coinsurance times an "average" doctor visit cost.
-    <a href="https://github.com/danpozmanter/health-plan-comparison">Source on Github</a>.
+    <a
+      class="text-blue-500"
+      href="https://github.com/danpozmanter/health-plan-comparison"
+      >Source on Github</a
+    >.
   </div>
   <div class="w-full grid grid-cols-1 md:grid-cols-2 bg-white text-sm p-5">
     <form
@@ -405,14 +409,18 @@ export default {
   },
   methods: {
     handleSubmit: async function () {
-      let fsa_a_active = (this.form.fsaEmployeeA != 0) || (this.form.fsaEmployerA != 0);
-      let hsa_a_active = (this.form.hsaEmployeeA != 0) || (this.form.hsaEmployerA != 0);
+      let fsa_a_active =
+        this.form.fsaEmployeeA != 0 || this.form.fsaEmployerA != 0;
+      let hsa_a_active =
+        this.form.hsaEmployeeA != 0 || this.form.hsaEmployerA != 0;
       if (fsa_a_active && hsa_a_active) {
         alert("FSA and HSA cannot both be active for Plan A");
         return;
       }
-      let fsa_b_active = (this.form.fsaEmployeeB != 0) || (this.form.fsaEmployerB != 0);
-      let hsa_b_active = (this.form.hsaEmployeeB != 0) || (this.form.hsaEmployerB != 0);
+      let fsa_b_active =
+        this.form.fsaEmployeeB != 0 || this.form.fsaEmployerB != 0;
+      let hsa_b_active =
+        this.form.hsaEmployeeB != 0 || this.form.hsaEmployerB != 0;
       if (fsa_b_active && hsa_b_active) {
         alert("FSB and HSB cannot both be active for Plan B");
         return;
